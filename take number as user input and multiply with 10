@@ -1,0 +1,3 @@
+a=int(input("Enter a number:"))
+mul=a*10
+print("Multiplication of a number is:",mul)
