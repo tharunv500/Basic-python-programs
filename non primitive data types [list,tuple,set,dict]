@@ -1,0 +1,8 @@
+a=[1,2,3,4]
+b=(1,2,3,4)
+c={1,2,3,4}
+d={1:"one",2:"two",3:"three",4:"four"}
+print("List is:",a)
+print("Tuple is:",b)
+print("Set is:",c)
+print("Dictionary is:",d)
