@@ -13,8 +13,9 @@ def binary_search(arr, target):
 
     return -1
 
-numbers = [10, 20, 30, 40, 50]
-target = 40
+arr = input("Enter numbers separated by space: ").split()
+arr = [int(x) for x in arr]
+target = int(input("Enter the number to search: "))
 
 result = binary_search(numbers, target)
 
