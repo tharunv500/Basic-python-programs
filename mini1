@@ -1,0 +1,65 @@
+print("Welcome to Food Delivery System")
+
+users = {
+    "user1": "abc",
+    "user2": "def",
+    "user3": "ghi"
+}
+
+menu = {
+    "Tiffin items": 50,
+    "Meals": 100,
+    "Juice items": 50,
+    "Snacks": 30
+}
+
+# Login
+while True:
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+
+    if username in users and users[username] == password:
+        print(f"Login successful! Welcome {username}.")
+        break
+    else:
+        print("Invalid username or password. Please try again.\n")
+
+orders = []
+
+while True:
+    print("\n--- Menu ---")
+    for idx, (item, price) in enumerate(menu.items(), start=1):
+        print(f"{idx}. {item} (₹{price} each)")
+    print(f"{len(menu)+1}. Show My Orders")
+    print(f"{len(menu)+2}. Exit")
+
+    try:
+        choice = int(input("Enter your choice: "))
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+
+    if 1 <= choice <= len(menu):
+        item_name = list(menu.keys())[choice-1]
+        try:
+            qty = int(input(f"Enter quantity of {item_name}: "))
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        orders.append((item_name, qty, menu[item_name], menu[item_name]*qty))
+        print(f"{qty} x {item_name} added to your order.")
+    elif choice == len(menu)+1:
+        if orders:
+            print("\n--- Your Orders ---")
+            total = 0
+            for item, qty, price, total_price in orders:
+                print(f"{item} x{qty} = ₹{total_price}")
+                total += total_price
+            print(f"Total Bill: ₹{total}")
+        else:
+            print("No orders yet.")
+    elif choice == len(menu)+2:
+        print("Thank you for ordering! Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
